@@ -52,5 +52,32 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3"
+  },
+  "jest": {
+    "moduleFileExtensions": ["js", "json", "ts"],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s",
+      "!**/*.module.ts",
+      "!main.ts",
+      "!**/*.dto.ts",
+      "!**/*.types.ts",
+      "!**/*.decorator.ts"
+    ],
+    "coverageDirectory": "../coverage",
+    "coverageReporters": ["json", "json-summary", "lcov", "text", "clover"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "functions": 85,
+        "lines": 85,
+        "statements": 85
+      }
+    },
+    "testEnvironment": "node"
   }
 }
