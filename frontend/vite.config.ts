@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'node:path';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig(({ mode }) => {
   const envFromFile = loadEnv(mode, process.cwd());
@@ -36,6 +37,29 @@ export default defineConfig(({ mode }) => {
         '@shared': path.resolve(__dirname, './src/shared'),
         '@features': path.resolve(__dirname, './src/features'),
         '@assets': path.resolve(__dirname, './src/assets'),
+      },
+    },
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: ['./src/test/setup.ts'],
+      coverage: {
+        provider: 'v8',
+        reporter: ['text', 'json', 'json-summary', 'lcov', 'clover'],
+        exclude: [
+          'node_modules/',
+          'src/main.tsx',
+          'src/test/**',
+          '**/*.config.ts',
+          '**/*.config.js',
+          'public/**',
+        ],
+        thresholds: {
+          branches: 75,
+          functions: 55,
+          lines: 15,
+          statements: 15,
+        },
       },
     },
   };
