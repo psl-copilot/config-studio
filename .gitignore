@@ -5,22 +5,27 @@ node_modules/
 dist/
 build/
 
-# Environment files
+# Environment variables
 .env
 .env.local
 .env.*.local
 
-# Logs
-*.log
-npm-debug.log*
-
-# OS files
-.DS_Store
-Thumbs.db
+# Coverage reports
+coverage/
+*.lcov
+.nyc_output/
 
 # IDE
 .vscode/
 .idea/
 
-# TypeScript build info
-*.tsbuildinfo
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test cache
+.vitest-cache/
