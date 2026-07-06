@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import { validate } from './config/env.validation';
 import { HttpModule } from '@nestjs/axios';
+import { AuthModule } from './auth/auth.module';
+import { ConfigProxyModule } from './config/config.module';
 
 @Module({
   imports: [
@@ -13,6 +15,8 @@ import { HttpModule } from '@nestjs/axios';
       validate,
     }),
     HttpModule,
+    AuthModule,
+    ConfigProxyModule,
   ],
   controllers: [AppController],
   providers: [AppService],
